@@ -3,7 +3,6 @@
  * https://github.com/sliptree/bootstrap-tokenfield
  * Copyright 2013-2014 Sliptree and other contributors; Licensed MIT
  */
-
 (function (factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
@@ -102,11 +101,19 @@
 
     // Create a new input
     var id = this.$element.prop('id') || new Date().getTime() + '' + Math.floor((1 + Math.random()) * 100)
-    this.$input = $('<input type="'+this.options.inputType+'" class="token-input" autocomplete="off" />')
+    if( this.options.inputType == "textarea" ) {
+      this.$input = $('<textarea class="token-input" autocomplete="off" ></textarea>')
                     .appendTo( this.$wrapper )
                     .prop( 'placeholder',  this.$element.prop('placeholder') )
                     .prop( 'id', id + '-tokenfield' )
                     .prop( 'tabindex', this.$element.data('original-tabindex') )
+    }else{
+      this.$input = $('<input type="'+this.options.inputType+'" class="token-input" autocomplete="off" />')
+                    .appendTo( this.$wrapper )
+                    .prop( 'placeholder',  this.$element.prop('placeholder') )
+                    .prop( 'id', id + '-tokenfield' )
+                    .prop( 'tabindex', this.$element.data('original-tabindex') )
+    }
 
     // Re-route original input label to new input
     var $label = $( 'label[for="' + this.$element.prop('id') + '"]' )
