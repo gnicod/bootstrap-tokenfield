@@ -47,7 +47,7 @@
     this._triggerKeys = $.map(this._delimiters, function (delimiter) {
       return delimiter.charCodeAt(0);
     });
-    this._firstDelimiter = this._delimiters[0];
+    this._firstDelimiter = (typeof this.options.separator === 'string') ? this.options.separator : this._delimiters[0];
 
     // Check for whitespace, dash and special characters
     var whitespace = $.inArray(' ', this._delimiters)
@@ -1029,6 +1029,7 @@
     showAutocompleteOnFocus: false,
     createTokensOnBlur: false,
     delimiter: ',',
+    separator: null,
     beautify: true,
     inputType: 'text'
   }

@@ -41,12 +41,13 @@ jQuery(document).ready(function($) {
 
   $('#tokenfield-1').tokenfield({
     inputType : 'textarea',
+    separator : ',',
     autocomplete: {
       source: ['red','blue','green','yellow','violet','brown','purple','black','white'],
       delay: 100
     },
     showAutocompleteOnFocus: true,
-    delimiter: [',','\n', '-', '_']
+    delimiter: ['\n']
   });
 
   var engine = new Bloodhound({
